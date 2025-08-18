@@ -9,6 +9,7 @@
             //  MainPage = new AppShell();
 
             MainPage = new NavigationPage(new Views.ListaProduto());
+            //Página inicial Alterada
         }
     }
 }
