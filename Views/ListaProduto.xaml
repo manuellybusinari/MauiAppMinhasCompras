@@ -8,18 +8,18 @@
         <ToolbarItem
             Text="Somar" Clicked="ToolbarItem_Clicked_1" />
         <ToolbarItem
-           Text="Adicionar" Clicked="ToolbarItem_Clicked"/> 
+           Text="Adicionar" Clicked="ToolbarItem_Clicked"/>
     </ContentPage.ToolbarItems>
-    
+
     <VerticalStackLayout>
         <SearchBar x:Name="txt_search"                    
                    Placeholder="Busca de Produtos"
                    TextChanged="txt_search_TextChanged"/>
-        
-        <ListView x:Name="lst_produtos">
+
+        <ListView x:Name="lst_produtos" ItemSelected="lst_produtos_ItemSelected">
 
             <ListView.Header>
-                <Grid ColumnDefinitions="*,*,*,*,*,*">
+                <Grid ColumnDefinitions="*,*,*,*,*">
                     <Label Grid.Column="0" Text="ID" />
                     <Label Grid.Column="1" Text="Descrição" />
                     <Label Grid.Column="2" Text="Preço" />
@@ -33,10 +33,10 @@
                 <DataTemplate>
                     <ViewCell>
                         <ViewCell.ContextActions>
-                            <MenuItem Text="Remover"  />
+                            <MenuItem Text="Remover" Clicked="MenuItem_Clicked" />
                         </ViewCell.ContextActions>
 
-                        <Grid ColumnDefinitions="*,*,*,*,*,*">
+                        <Grid ColumnDefinitions="*,*,*,*,*">
                             <Label Grid.Column="0" Text="{Binding Id}" />
                             <Label Grid.Column="1" Text="{Binding Descricao}" />
                             <Label Grid.Column="2" Text="{Binding Preco}" />
@@ -45,9 +45,9 @@
                         </Grid>
                     </ViewCell>
                 </DataTemplate>
-                
+
             </ListView.ItemTemplate>
-            
+
         </ListView>
 
     </VerticalStackLayout>

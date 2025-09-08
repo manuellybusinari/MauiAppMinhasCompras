@@ -19,7 +19,7 @@
         <Entry x:Name="txt_qtd" Keyboard="Numeric" /> 
 
         <Label Text="Preço unitário do produto: "/>
-        <Entry x:Name="txt_preco" />
+        <Entry x:Name="txt_preco" Keyboard="Numeric" />
 
 
 
