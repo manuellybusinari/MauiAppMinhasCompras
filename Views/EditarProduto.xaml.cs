@@ -16,17 +16,20 @@ public partial class EditarProduto : ContentPage
         {
             try
             {
-
-                Produto p = new Produto 
+                // id: BindingContext -> tela de editar 
+                Produto produto_anexado = BindingContext as Produto;
+                Produto p = new Produto
                 {
+                    Id= produto_anexado.Id,
                     Descricao= txt_descricao.Text,
                     Quantidade= Convert.ToDouble(txt_qtd.Text),
                     Preco= Convert.ToDouble(txt_preco.Text)
-                };  
+                };
 
+                await App.Db.Update(p); //corrigindo...
+                await DisplayAlert("Sucesso", "Registro Atualizado", "OK!!");
+                await Navigation.PopAsync();    //Voltar à tela de origem
 
-                await App.Db.Insert(p);
-                await DisplayAlert("Sucesso", "Registro inserido", "OK!!");
 
             }
             catch (Exception ex)
