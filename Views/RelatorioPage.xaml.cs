@@ -9,14 +9,32 @@ public partial class RelatorioPage : ContentPage
         InitializeComponent();
     }
 
-    private async void OnFiltrarClicked(object sender, EventArgs e)
+    // Evento chamado quando o botão "Filtrar" é clicado
+    private async void Filtrar_Clicked(object sender, EventArgs e)
     {
-        var todosProdutos = await App.Db.GetAll();
+        try
+        {
+            // Captura as datas selecionadas pelo usuário
+            DateTime dataInicial = dpInicio.Date;
+            DateTime dataFinal = dpFim.Date;
 
-        var filtrados = todosProdutos
-            .Where(p => p.DataCadastro >= dpInicio.Date && p.DataCadastro <= dpFim.Date)
-            .ToList();
+            // Busca todos os produtos do banco
+            var todosProdutos = await App.Db.GetAll();
 
-        lvRelatorio.ItemsSource = filtrados;
+            // Filtra os produtos dentro do intervalo de datas
+            var produtosFiltrados = todosProdutos
+                .Where(p => p.DataCadastro >= dataInicial && p.DataCadastro <= dataFinal)
+                .OrderBy(p => p.DataCadastro)
+                .ToList();
+
+            // Exibe os produtos filtrados na ListView
+            lvRelatorio.ItemsSource = produtosFiltrados;
+        }
+        catch (Exception ex)
+        {
+            await DisplayAlert("Erro", ex.Message, "OK");
+        }
     }
 }
+
+   

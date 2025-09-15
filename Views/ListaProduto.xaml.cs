@@ -163,4 +163,9 @@ public partial class ListaProduto : ContentPage
         }
 
     }
+
+    private async void AbrirRelatorio_Clicked(object sender, EventArgs e)
+    {
+        await Navigation.PushAsync(new RelatorioPage());
+    }
 }

@@ -20,7 +20,9 @@
             </Style>
         </ResourceDictionary>
     </ContentPage.Resources>
-    <StackLayout>
+
+    <ScrollView>
+        <StackLayout>
         <SearchBar x:Name="txt_search"  
                    Margin="10, 10, 10, 0"                  
                    Placeholder="Busca de Produtos"                  
@@ -37,7 +39,7 @@
 
             <ListView.Header>
                 <Grid ColumnDefinitions="*,*,*,*,*"
-                      BackgroundColor="{StaticResource Gray600}">
+                      BackgroundColor="{StaticResource MidnightBlue}">
                         <Label Grid.Column="0" Text="ID" Padding="20" FontAttributes="Bold" TextColor="White"/>
                         <Label Grid.Column="1" Text="Descrição" Padding="20" FontAttributes="Bold" TextColor="White"/>
                         <Label Grid.Column="2" Text="Preço" Padding="20" FontAttributes="Bold" TextColor="White" />
@@ -61,13 +63,18 @@
                                 <Label Grid.Column="2" Text="{Binding Preco, StringFormat='{}{0:c}'}" Padding="20" />
                                 <Label Grid.Column="3" Text="{Binding Quantidade}" Padding="20"/>
                                 <Label Grid.Column="4" Text="{Binding Total, StringFormat='{}{0:c}'}" Padding="20"  />
+
                         </Grid>
                     </ViewCell>
+                    
                 </DataTemplate>
 
             </ListView.ItemTemplate>
 
         </ListView>
         </Frame>
+        <Button Text="Ver Relatório" Clicked="AbrirRelatorio_Clicked" BackgroundColor="{StaticResource MidnightBlue }" />
+
     </StackLayout>
+        </ScrollView>
 </ContentPage>

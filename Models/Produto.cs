@@ -7,6 +7,7 @@ namespace MauiAppMinhasCompras.Models
 
         [PrimaryKey, AutoIncrement]
         public int Id { get; set; }
+
         public string Descricao
         {
             get => _descricao; // Retorno da descrição 
@@ -22,9 +23,11 @@ namespace MauiAppMinhasCompras.Models
             }
         }
         public double Quantidade { get; set; }
+
         public double Preco { get; set; }
         public double Total { get => Quantidade * Preco; }
-        public DateTime DataCadastro { get; set; } // Esse campo vai registrar a data em que o produto foi comprado.
+    
+        public DateTime DataCadastro { get; set; }// Esse campo vai registrar a data em que o produto foi comprado.
     }
 
 }
