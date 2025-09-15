@@ -11,20 +11,39 @@
            Text="Adicionar" Clicked="ToolbarItem_Clicked"/>
     </ContentPage.ToolbarItems>
 
-    <VerticalStackLayout>
-        <SearchBar x:Name="txt_search"                    
-                   Placeholder="Busca de Produtos"
-                   TextChanged="txt_search_TextChanged"/>
+    <ContentPage.Resources>
 
-        <ListView x:Name="lst_produtos" ItemSelected="lst_produtos_ItemSelected">
+        <ResourceDictionary>
+            <Style TargetType="Label">
+                <Setter Property="VerticalTextAlignment" Value="Center" />
+                
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <StackLayout>
+        <SearchBar x:Name="txt_search"  
+                   Margin="10, 10, 10, 0"                  
+                   Placeholder="Busca de Produtos"                  
+                   TextChanged="txt_search_TextChanged"/>
+        
+        <Frame Padding="10" 
+               Margin="20" 
+               VerticalOptions="Fill">
+
+            <ListView x:Name="lst_produtos" 
+                  IsPullToRefreshEnabled="True"
+                  Refreshing="lst_produtos_Refreshing"
+                  ItemSelected="lst_produtos_ItemSelected">
 
             <ListView.Header>
-                <Grid ColumnDefinitions="*,*,*,*,*">
-                    <Label Grid.Column="0" Text="ID" />
-                    <Label Grid.Column="1" Text="Descrição" />
-                    <Label Grid.Column="2" Text="Preço" />
-                    <Label Grid.Column="3" Text="Qtd" />
-                    <Label Grid.Column="4" Text="Total" />
+                <Grid ColumnDefinitions="*,*,*,*,*"
+                      BackgroundColor="{StaticResource Gray600}">
+                        <Label Grid.Column="0" Text="ID" Padding="20" FontAttributes="Bold" TextColor="White"/>
+                        <Label Grid.Column="1" Text="Descrição" Padding="20" FontAttributes="Bold" TextColor="White"/>
+                        <Label Grid.Column="2" Text="Preço" Padding="20" FontAttributes="Bold" TextColor="White" />
+                        <Label Grid.Column="3" Text="Qtd" Padding="20" FontAttributes="Bold" TextColor="White"/>
+                        <Label Grid.Column="4" Text="Total" Padding="20" FontAttributes="Bold" TextColor="White"/>
+                    
 
                 </Grid>
 
@@ -36,12 +55,12 @@
                             <MenuItem Text="Remover" Clicked="MenuItem_Clicked" />
                         </ViewCell.ContextActions>
 
-                        <Grid ColumnDefinitions="*,*,*,*,*">
-                            <Label Grid.Column="0" Text="{Binding Id}" />
-                            <Label Grid.Column="1" Text="{Binding Descricao}" />
-                            <Label Grid.Column="2" Text="{Binding Preco}" />
-                            <Label Grid.Column="3" Text="{Binding Quantidade}" />
-                            <Label Grid.Column="4" Text="{Binding Total}" />
+                            <Grid ColumnDefinitions="*,*,*,*,*">
+                            <Label Grid.Column="0" Text="{Binding Id}" Padding="20" />
+                                <Label Grid.Column="1" Text="{Binding Descricao}" Padding="20" />
+                                <Label Grid.Column="2" Text="{Binding Preco, StringFormat='{}{0:c}'}" Padding="20" />
+                                <Label Grid.Column="3" Text="{Binding Quantidade}" Padding="20"/>
+                                <Label Grid.Column="4" Text="{Binding Total, StringFormat='{}{0:c}'}" Padding="20"  />
                         </Grid>
                     </ViewCell>
                 </DataTemplate>
@@ -49,6 +68,6 @@
             </ListView.ItemTemplate>
 
         </ListView>
-
-    </VerticalStackLayout>
+        </Frame>
+    </StackLayout>
 </ContentPage>

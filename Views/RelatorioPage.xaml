@@ -1,0 +1,12 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiAppMinhasCompras.Views.RelatorioPage"
+             Title="Relatório">
+
+    <VerticalStackLayout Padding="20">
+        <DatePicker x:Name="dpInicio" />
+        <DatePicker x:Name="dpFim" />
+        <Button Text="Filtrar" Clicked="OnFiltrarClicked" />
+        <ListView x:Name="lvRelatorio" />
+    </VerticalStackLayout>
+</ContentPage>

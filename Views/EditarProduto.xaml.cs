@@ -23,7 +23,8 @@ public partial class EditarProduto : ContentPage
                     Id= produto_anexado.Id,
                     Descricao= txt_descricao.Text,
                     Quantidade= Convert.ToDouble(txt_qtd.Text),
-                    Preco= Convert.ToDouble(txt_preco.Text)
+                    Preco= Convert.ToDouble(txt_preco.Text),
+                    DataCadastro= dp_dataCadastro.Date //  Atualiza a data
                 };
 
                 await App.Db.Update(p); //corrigindo...

@@ -22,7 +22,10 @@
         <Label Text="Preço unitário do produto: "/>
         <Entry x:Name="txt_preco" Text="{Binding Preco}"
                Keyboard="Numeric" />
-        
+
+        <Label Text="Data da compra:" />
+        <DatePicker x:Name="dp_dataCadastro" Format="dd/MM/yyyy" />
+
     </VerticalStackLayout>
 </ContentPage>
 
