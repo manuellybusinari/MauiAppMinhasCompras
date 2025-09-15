@@ -12,7 +12,7 @@
 
         <Button Text="Filtrar" 
                 Clicked="Filtrar_Clicked" 
-                BackgroundColor="{x:StaticResource MidnightBlue}"
+                BackgroundColor="Gray"
                 FontAttributes="Bold"/>
 
         <ListView x:Name="lvRelatorio">

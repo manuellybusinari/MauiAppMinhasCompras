@@ -26,7 +26,7 @@ namespace MauiAppMinhasCompras.Models
 
         public double Preco { get; set; }
         public double Total { get => Quantidade * Preco; }
-    
+
         public DateTime DataCadastro { get; set; }// Esse campo vai registrar a data em que o produto foi comprado.
     }
 

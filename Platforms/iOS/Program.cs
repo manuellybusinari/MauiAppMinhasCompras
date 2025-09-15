@@ -1,4 +1,5 @@
-﻿using ObjCRuntime;
+﻿
+using ObjCRuntime;
 using UIKit;
 
 namespace MauiAppMinhasCompras

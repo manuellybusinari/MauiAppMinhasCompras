@@ -73,7 +73,7 @@
 
         </ListView>
         </Frame>
-        <Button Text="Ver Relatório" Clicked="AbrirRelatorio_Clicked" BackgroundColor="{StaticResource MidnightBlue }" />
+        <Button Text="Ver Relatório" Clicked="AbrirRelatorio_Clicked" BackgroundColor="Gray" />
 
     </StackLayout>
         </ScrollView>
