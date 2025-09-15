@@ -1,33 +1,38 @@
 ﻿using SQLite;
+
 namespace MauiAppMinhasCompras.Models
 {
     public class Produto
     {
-        string _descricao;
+        private string _descricao;
 
         [PrimaryKey, AutoIncrement]
         public int Id { get; set; }
 
         public string Descricao
         {
-            get => _descricao; // Retorno da descrição 
-
+            get => _descricao;
             set
             {
-                if(value == null) // 'null' diferente de 'vazio'
+                if (string.IsNullOrWhiteSpace(value))
                 {
-                    throw new Exception("Por favor, preencha os campos");
+                    throw new Exception("A descrição não pode ser nula ou vazia.");
                 }
 
                 _descricao = value;
             }
         }
-        public double Quantidade { get; set; }
 
+        public double Quantidade { get; set; }
         public double Preco { get; set; }
         public double Total { get => Quantidade * Preco; }
 
-        public DateTime DataCadastro { get; set; }// Esse campo vai registrar a data em que o produto foi comprado.
-    }
+        public DateTime DataCadastro { get; set; }
 
+        // Construtor para inicializar as propriedades, incluindo a DataCadastro
+        public Produto()
+        {
+            DataCadastro = DateTime.Now;
+        }
+    }
 }

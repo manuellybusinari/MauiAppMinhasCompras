@@ -1,7 +1,5 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
+﻿using MauiAppMinhasCompras.Models;    // classe Produto
 using SQLite;                         // acesso ao SQLite
-using MauiAppMinhasCompras.Models;    // classe Produto
 
 namespace MauiAppMinhasCompras.Helpers
 {

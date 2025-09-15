@@ -1,4 +1,5 @@
 using MauiAppMinhasCompras.Models;
+using System.Globalization;
 
 namespace MauiAppMinhasCompras.Views;
 
@@ -11,32 +12,34 @@ public partial class EditarProduto : ContentPage
 
     private async void ToolbarItem_Clicked(object sender, EventArgs e)
     {
-        // Preencher o Model com os dados atualizados
-
+        try
         {
-            try
+            if (string.IsNullOrWhiteSpace(txt_descricao.Text) ||
+                string.IsNullOrWhiteSpace(txt_qtd.Text) ||
+                string.IsNullOrWhiteSpace(txt_preco.Text))
             {
-                // id: BindingContext -> tela de editar 
-                Produto produto_anexado = BindingContext as Produto;
-                Produto p = new Produto
-                {
-                    Id= produto_anexado.Id,
-                    Descricao= txt_descricao.Text,
-                    Quantidade= Convert.ToDouble(txt_qtd.Text),
-                    Preco= Convert.ToDouble(txt_preco.Text),
-                    DataCadastro= dp_dataCadastro.Date //  Atualiza a data
-                };
-
-                await App.Db.Update(p); //corrigindo...
-                await DisplayAlert("Sucesso", "Registro Atualizado", "OK!!");
-                await Navigation.PopAsync();    //Voltar à tela de origem
-
-
+                await DisplayAlert("Atenção", "Por favor, preencha todos os campos.", "OK!");
+                return;
             }
-            catch (Exception ex)
+
+            Produto produto_anexado = BindingContext as Produto;
+
+            Produto p = new Produto
             {
-                await DisplayAlert("Ops", ex.Message, "OK!");
-            }
+                Id = produto_anexado.Id,
+                Descricao = txt_descricao.Text.Trim(),
+                Quantidade = Convert.ToDouble(txt_qtd.Text, CultureInfo.InvariantCulture),
+                Preco = Convert.ToDouble(txt_preco.Text, CultureInfo.InvariantCulture),
+                DataCadastro = dp_dataCadastro.Date
+            };
+
+            await App.Db.Update(p);
+            await DisplayAlert("Sucesso", "Registro atualizado com sucesso!", "OK!");
+            await Navigation.PopAsync();
+        }
+        catch (Exception ex)
+        {
+            await DisplayAlert("Erro", $"Não foi possível atualizar o produto: {ex.Message}", "OK!");
         }
     }
 }

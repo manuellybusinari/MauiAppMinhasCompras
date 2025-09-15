@@ -1,5 +1,3 @@
-using MauiAppMinhasCompras.Models;
-
 namespace MauiAppMinhasCompras.Views;
 
 public partial class RelatorioPage : ContentPage
@@ -37,4 +35,3 @@ public partial class RelatorioPage : ContentPage
     }
 }
 
-   

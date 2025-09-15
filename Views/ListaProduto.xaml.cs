@@ -1,6 +1,5 @@
 using MauiAppMinhasCompras.Models;
 using System.Collections.ObjectModel;
-using System.Threading.Tasks;
 
 namespace MauiAppMinhasCompras.Views;
 
@@ -19,7 +18,7 @@ public partial class ListaProduto : ContentPage
     {
         try
         {
-            lista.Clear(); 
+            lista.Clear();
 
             List<Produto> tmp = await App.Db.GetAll();
 
@@ -64,9 +63,10 @@ public partial class ListaProduto : ContentPage
         catch (Exception ex)
         {
             await DisplayAlert("Ops", ex.Message, "OK");
-        }finally
+        }
+        finally
         {
-            lst_produtos.IsRefreshing=false; 
+            lst_produtos.IsRefreshing=false;
         }
 
     }
@@ -104,11 +104,11 @@ public partial class ListaProduto : ContentPage
 
             bool confirm = await DisplayAlert("Tem Certeza?", $"Remover Produto {p.Descricao}?", "Sim", "Não"); // confirmar exclusão, com o nome do produto associado (p)
 
-                //Se a pessoa Confirmar: RETORNA-> True (segue 'if')
+            //Se a pessoa Confirmar: RETORNA-> True (segue 'if')
 
-                //Se a pessoa Cancelar: RETORNA-> False 
+            //Se a pessoa Cancelar: RETORNA-> False 
 
-                if (confirm)
+            if (confirm)
             {
                 await App.Db.Delete(p.Id); // Removerá do banco de dados 
                 lista.Remove(p); // Remove do Observable Collection / listview - 'p' - item da lista selecionado
@@ -117,7 +117,7 @@ public partial class ListaProduto : ContentPage
         }
         catch (Exception ex)
         {
-           await DisplayAlert("Ops", ex.Message, "OK");
+            await DisplayAlert("Ops", ex.Message, "OK");
         }
 
     }
@@ -157,9 +157,10 @@ public partial class ListaProduto : ContentPage
         {
             await DisplayAlert("Ops", ex.Message, "OK");
 
-        }finally
+        }
+        finally
         {
-            lst_produtos.IsRefreshing= false; 
+            lst_produtos.IsRefreshing= false;
         }
 
     }

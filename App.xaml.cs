@@ -8,7 +8,8 @@ namespace MauiAppMinhasCompras
         static SQLiteDatabaseHelper _db; //_db -> campo
 
         public static SQLiteDatabaseHelper Db // -->Db: propriedade de leitura
-        { get // contendo uma instância da classe SQLiteDatabaseHelper
+        {
+            get // contendo uma instância da classe SQLiteDatabaseHelper
             {
                 if (_db == null) // se não houver nenhum objeto dentro do campo
                 {
@@ -25,16 +26,19 @@ namespace MauiAppMinhasCompras
                     // GetFolderPath: Informações contidas em uma pasta
                     // Environment.SpecialFolder: Local/caminho
 
-                   
+
 
 
                     _db= new SQLiteDatabaseHelper(path);
                 }
                 return _db; // retorna
-            }            
-            
-                }
-                                             
+
+
+
+            }
+
+        }
+
         public App()
         {
             InitializeComponent();
